@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since 16.04.2022
  */
 public interface GeologicalClassRepo extends JpaRepository<GeologicalClass, Long> {
-    GeologicalClass getGeologicalClassByCode();
+    GeologicalClass getGeologicalClassByCode(String code);
 }

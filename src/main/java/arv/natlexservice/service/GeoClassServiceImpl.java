@@ -19,7 +19,7 @@ public class GeoClassServiceImpl implements GeoClassService {
 
     @Override
     public GeologicalClass getGeologicalClass(String code) {
-        return geologicalClassRepo.getGeologicalClassByCode();
+        return geologicalClassRepo.getGeologicalClassByCode(code);
     }
 
     @Override
