@@ -1,6 +1,7 @@
 package arv.natlexservice.controller;
 
 import arv.natlexservice.model.Section;
+import arv.natlexservice.repo.SectionRepo;
 import arv.natlexservice.service.SectionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class SectionController {
     @Autowired
-    private SectionServiceImpl sectionService;
+    private SectionRepo sectionService;
 
     @PostMapping("/sections")
-   public ResponseEntity<Section> createSection(@RequestBody Section section) {
-        return new ResponseEntity<>(this.sectionService.createSection(section),HttpStatus.CREATED);
+    public Section createSection(@RequestBody Section section) {
+        sectionService.save(section);
+        return section;
     }
 
 }

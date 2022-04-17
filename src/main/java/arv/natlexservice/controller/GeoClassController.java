@@ -1,8 +1,10 @@
 package arv.natlexservice.controller;
 
 import arv.natlexservice.model.GeologicalClass;
+import arv.natlexservice.repo.GeologicalClassRepo;
 import arv.natlexservice.service.GeoClassService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/geo")
-@RequiredArgsConstructor
 public class GeoClassController {
-    private GeoClassService geoClassService;
+    @Autowired
+    private GeologicalClassRepo geoClassService;
 
     @PostMapping("/geoClassService")
-    public ResponseEntity<GeologicalClass> createGeo(@RequestBody GeologicalClass geologicalClass) {
-        return new ResponseEntity<>(this.geoClassService.create(geologicalClass), HttpStatus.CREATED);
+    public GeologicalClass createGeo(@RequestBody GeologicalClass geologicalClass) {
+        geoClassService.save(geologicalClass);
+        return geologicalClass;
     }
 }
