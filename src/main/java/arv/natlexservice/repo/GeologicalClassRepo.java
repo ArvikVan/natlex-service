@@ -3,6 +3,8 @@ package arv.natlexservice.repo;
 import arv.natlexservice.model.GeologicalClass;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * @author ArvikV
  * @version 1.0

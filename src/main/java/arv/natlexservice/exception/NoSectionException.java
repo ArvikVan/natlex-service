@@ -1,4 +1,4 @@
-package arv.natlexservice.controller.exception;
+package arv.natlexservice.exception;
 
 /**
  * @author ArvikV

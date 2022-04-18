@@ -1,11 +1,13 @@
 package arv.natlexservice.service;
 
+import arv.natlexservice.model.GeologicalClass;
 import arv.natlexservice.model.Section;
 import arv.natlexservice.repo.SectionRepo;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,12 +1,13 @@
 package arv.natlexservice.controller;
 
-import arv.natlexservice.controller.exception.NoSectionException;
+import arv.natlexservice.exception.NoSectionException;
+import arv.natlexservice.model.GeologicalClass;
 import arv.natlexservice.model.Section;
+import arv.natlexservice.repo.GeologicalClassRepo;
 import arv.natlexservice.repo.SectionRepo;
 import arv.natlexservice.service.SectionServiceImpl;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,6 +54,13 @@ public class SectionController {
         }
         sectionService.deleteById(id);
         return "Section with id " + id + " deleted";
+    }
+
+    @GetMapping("/by-code/{code}")
+    public List<Section> getAllSecByCode(@PathVariable String code) {
+        List<Section> sectionList = sectionService.findSectionsByGeologicalClassCode(code);
+        return sectionList;
+
     }
 
 }
